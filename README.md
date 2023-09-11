@@ -53,18 +53,10 @@ You will be prompted to enter the desired country code and VPN password.
 
 ***AutoVPN4*** does not require additional configuration files. However, you may customize the script behavior by modifying the source code directly.
 
-Aceitamos contribuições! Se você quiser contribuir com o ***AutoVPN4***, siga estas etapas:
-
-    Bifurque o repositório no GitHub.
-    Crie um novo branch para suas contribuições.
-    Faça suas alterações e confirme-as.
-    Envie suas alterações para seu fork.
-    Crie uma solicitação pull para o repositório principal.
-
-Certifique-se de que seu código siga o estilo e as convenções de codificação do projeto.
-
 
 # You can customize this documentation further based on your specific project details and requirements.
 
 
-![Sem título](https://github.com/0x5FE/autvpn4/assets/65371336/34063a8a-5f7d-4ab1-8087-f0c144a4b4af)
+
+
+![Teste teste](https://github.com/0x5FE/autvpn4/assets/65371336/5a191713-a737-4d53-b07d-b804de975bc0)

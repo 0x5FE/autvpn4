@@ -9,6 +9,7 @@ import urllib3
 import shutil
 import platform
 from getpass import getpass
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QMessageBox
 
 
 VPN_GATE_API_URL = "https://www.vpngate.net/api/iphone/"
@@ -74,39 +75,50 @@ class AutoVpn4:
         else:
             raise Exception("Unsupported platform")
 
+class AutoVpn4GUI(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.initUI()
+
+    def initUI(self):
+        self.setWindowTitle("Welcome to AutoVPN4")
+        self.setGeometry(100, 100, 400, 200)
+
+        self.country_label = QLabel("Enter desired country code:", self)
+        self.country_label.move(20, 20)
+
+        self.country_input = QLineEdit(self)
+        self.country_input.move(200, 20)
+
+        self.password_label = QLabel("Enter VPN password:", self)
+        self.password_label.move(20, 60)
+
+        self.password_input = QLineEdit(self)
+        self.password_input.setEchoMode(QLineEdit.Password)
+        self.password_input.move(200, 60)
+
+        self.connect_button = QPushButton("Connect", self)
+        self.connect_button.move(150, 120)
+        self.connect_button.clicked.connect(self.connect_vpn)
+
+    def connect_vpn(self):
+        country_code = self.country_input.text()
+        password = self.password_input.text()
+        vpn = AutoVpn4(country_code)
+        vpn.password = password
+        try:
+            vpn.openvpn()
+        except Exception as e:
+            QMessageBox.critical(self, "Error", str(e))
+
 def main():
     if not os.environ.get('USERPROFILE') and platform.system() == "Windows":
         sys.exit("[!] Please run the script from a user account, not a system account.")
 
-    try:
-        print("\033[96m\n[autovpn4] Getting server list")
-        print("[autovpn4] Parsing response")
-        country_code = input("Enter desired country code: ")
-        password = getpass("Enter VPN password: ")
-        vpn = AutoVpn4(country_code)
-        vpn.password = password
-        vpn.openvpn()
-    except KeyboardInterrupt:
-        if platform.system() == "Windows":
-            subprocess.run(["taskkill", "/F", "/IM", "openvpn.exe"])
-        else:
-            subprocess.run(["pkill", "openvpn"])
-            subprocess.run(["clear"])
-        AutoVpn4.clean_up()
-        retry = ("y", "yes")
-        try:
-            ans = input("\033[92m\n[autovpn4]\033[93m Try another VPN? (y/n)\033[0m \033[92m")
-            if ans.lower() in retry:
-                try:
-                    servers = ("JP", "KR")
-                    country_code = input("Enter desired country code: ")
-                    vpn = AutoVpn4(country_code)
-                    vpn.password = password
-                    vpn.openvpn()
-                except:
-                    AutoVpn4.clean_up()
-        except:
-            pass
+    app = QApplication(sys.argv)
+    window = AutoVpn4GUI()
+    window.show()
+    sys.exit(app.exec_())
 
 if __name__ == "__main__":
     main()

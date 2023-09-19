@@ -10,7 +10,7 @@ import shutil
 import platform
 from getpass import getpass
 
-# Constants
+
 VPN_GATE_API_URL = "https://www.vpngate.net/api/iphone/"
 TEMP_DIR = tempfile.mkdtemp()
 

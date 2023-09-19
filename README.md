@@ -58,5 +58,6 @@ You will be prompted to enter the desired country code and VPN password.
 
 
 
-![Teste teste](https://github.com/0x5FE/autvpn4/assets/65371336/ed1cad18-1b1f-42cd-baa6-f5358ede239f)
+![aut interface](https://github.com/0x5FE/autvpn4/assets/65371336/5a7f9069-086a-43e2-a800-ebc45f0122eb)
+
 

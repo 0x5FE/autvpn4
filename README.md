@@ -1,63 +1,43 @@
-AutoVPN4 is a Python script for automating VPN connections using OpenVPN and [VPN Gate servers](https://www.vpngate.net). 
+- AutoVPN4 is a Python script for automating VPN connections using OpenVPN and [VPN Gate servers](https://www.vpngate.net). 
+- An idea similar to to [autovpn2](https://github.com/ruped24/autovpn2) With some improvements.
 
-An idea similar to to [autovpn2](https://github.com/ruped24/autovpn2) With some improvements.
-
-
-# Prerequisites
-
-Before you begin, ensure you have met the following requirements:
-
-    Python 3.x is installed on your system.
+![tela_01](https://github.com/user-attachments/assets/c418b2d2-ce6f-4049-bc92-9599819b27ca)
+![tela_02](https://github.com/user-attachments/assets/1d34b93a-626b-4e74-834f-f42abbf699a0)
 
 
-You can directly download the script or Clone this repository to your local machine using the following command:
+# Main Features:
 
-    git clone https://github.com/0x5FE/autvpn4.git
+- Automatically selects and connects to a VPN server based on the country code provided.
 
+- the interface is intuitive and supports multiple languages ​​(English and Portuguese).
 
-# Install Dependencies
+- Allows for language customization and the inclusion of optional SSL certificates.
+
+- Checks for the availability of new versions of the application.
+
+- Uses Fernet encryption to protect passwords and sensitive data.
+
+# Installation
+
+    git clone https://github.com/mrfelpa/autovpn4.git
 
 Navigate to the project directory:
 
-    cd autvpn4
+        cd autvpn4
 
-    
-Install the required dependencies using pip:
+# Install Dependencies
 
     pip install -r requirements.txt
+    
+# Setting up OpenVPN:
 
+- On Windows, download and install OpenVPN from the official website.
 
+- On Linux, install via package manager:
 
-# Basic Usage
+        sudo apt-get install openvpn
 
-To connect to a VPN server in the US (default) with a password prompt:
+# Additional Settings:
 
-    python autvpn4.py
-
-You will be prompted to enter the desired country code and VPN password.
-
-
-# Advanced Usage
-
-***AutoVPN4*** supports more advanced options. For example, you can specify a country code and provide the password directly:
-
-    python autvpn4.py --country JP --password YourPassword123
-
-
-# Options and Parameters
-
-***AutoVPN4*** accepts the following command-line options and parameters:
-
-    --country: Specify the desired country code (default is "US").
-    --password: Provide the VPN password directly (useful for automation).
-
-***AutoVPN4*** does not require additional configuration files. However, you may customize the script behavior by modifying the source code directly.
-
-
-# You can customize this documentation further based on your specific project details and requirements.
-
-
-
-![aut interface](https://github.com/0x5FE/autvpn4/assets/65371336/5a7f9069-086a-43e2-a800-ebc45f0122eb)
-
-
+- The ***config.ini*** file allows you to customize the VPN Gate API URL and other default settings.
+- To add support for new languages, edit the LANGUAGES dictionary in the source code.
